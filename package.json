@@ -1,0 +1,30 @@
+{
+  "name": "inventory-tracking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dandlp95/inventory-tracking.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dandlp95/inventory-tracking/issues"
+  },
+  "homepage": "https://github.com/dandlp95/inventory-tracking#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.3",
+    "nodemon": "^2.0.16",
+    "swagger-ui-express": "^4.4.0"
+  },
+  "devDependencies": {
+    "swagger-autogen": "^2.21.1"
+  }
+}
