@@ -8,11 +8,11 @@ const ProductSchema = new mongoose.Schema({
       ref: "Warehouse"
   },
 
-  categoryId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: "Category",
-  },
+//   categoryId: {
+//     type: Schema.Types.ObjectId,
+//     required: true,
+//     ref: "Category",
+//   },
 
   productName: {
     type: "string",

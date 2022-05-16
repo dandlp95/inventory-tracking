@@ -1,4 +1,4 @@
-const warehouseModel = require("../db/categoryModel");
+const warehouseModel = require("../db/warehouseModel");
 
 const getWarehouses = async function (req, res) {
   const warehouses = await warehouseModel.find({});
@@ -11,26 +11,26 @@ const getWarehouses = async function (req, res) {
 };
 
 const getWarehouse = async function (req, res) {
-  const category = await categoryModel.findById(req.params.id);
+  const warehouse = await categoryModel.findById(req.params.id);
   try {
-    res.status(200).send(category);
+    res.status(200).send(warehouse);
   } catch (error) {
     res.status(500).send(error);
   }
 };
 
-const addCategory = async function (req, res) {
-  const category = new categoryModel(req.body);
+const addWarehouse = async function (req, res) {
+  const warehouse = new warehouseModel(req.body);
 
   try {
     await category.save();
-    res.status(200).send(category);
+    res.status(200).send(warehouse);
   } catch (error) {
     res.status(500).send(error);
   }
 };
 
-const editCategory = function (req, res) {
+const editWarehouse = function (req, res) {
   categoryModel.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -44,8 +44,8 @@ const editCategory = function (req, res) {
   );
 };
 
-const deleteCategory = function (req, res) {
-  categoryModel.findByIdAndDelete(req.params.id, (err, docs) => {
+const deleteWarehouse = function (req, res) {
+  warehouseModel.findByIdAndDelete(req.params.id, (err, docs) => {
     if (err) {
       res.status(400).send(err);
     } else {
@@ -59,9 +59,9 @@ const deleteCategory = function (req, res) {
 };
 
 module.exports = {
-  getCategories,
-  getCategory,
-  addCategory,
-  editCategory,
-  deleteCategory,
+  getWarehouses,
+  getWarehouse,
+  addWarehouse,
+  editWarehouse,
+  deleteWarehouse
 };
