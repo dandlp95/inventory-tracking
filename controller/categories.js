@@ -1,11 +1,11 @@
-const contactModel = require('../db/categoryModel')
+const categoryModel = require('../db/categoryModel')
 
 const getCategories = async function (req, res) {
 
-    const contacts = await contactModel.find({});
+    const categories = await categoryModel.find({});
   
     try {
-      res.status(200).send(contacts);
+      res.status(200).send(categories);
     } catch (error) {
       res.status(500).send(error);
     }
@@ -13,9 +13,9 @@ const getCategories = async function (req, res) {
 
 const getCategory = async function (req, res){
 
-    const contact = await contactModel.findById(req.params.id);
+    const category = await categoryModel.findById(req.params.id);
     try{
-        res.status(200).send(contact);
+        res.status(200).send(category);
     }catch (error) {
         res.status(500).send(error);
     }
@@ -23,11 +23,11 @@ const getCategory = async function (req, res){
 
 const addCategory = async function (req, res){
 
-    const contact = new contactModel(req.body);
+    const category = new categoryModel(req.body);
 
     try{
-        await contact.save();
-        res.status(200).send(contact);
+        await category.save();
+        res.status(200).send(category);
     }catch (error) {
         res.status(500).send(error);
     }
@@ -35,7 +35,7 @@ const addCategory = async function (req, res){
 
 const editCategory = function (req, res){
 
-    contactModel.findByIdAndUpdate(req.params.id, req.body, function(err, docs){
+    categoryModel.findByIdAndUpdate(req.params.id, req.body, function(err, docs){
         if(err){
             res.status(400).send(err);
         }else{
@@ -46,7 +46,7 @@ const editCategory = function (req, res){
 
 const deleteCategory = function (req, res){
 
-    contactModel.findByIdAndDelete(req.params.id, (err, docs)=>{
+    categoryModel.findByIdAndDelete(req.params.id, (err, docs)=>{
         if (err) {
             res.status(400).send(err);
         }
@@ -55,7 +55,7 @@ const deleteCategory = function (req, res){
                 res.status(200).send("Already Deleted");
             }
             else {
-                res.status(200).send(docs)
+                res.status(200).send(docs);
             }}
     })
 }
