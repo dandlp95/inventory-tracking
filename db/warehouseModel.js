@@ -14,14 +14,14 @@ const WarehouseSchema = new mongoose.Schema({
     {
       product: {
         type: Schema.Types.ObjectId,
-        ref: "Product",
+        ref: "Product"
       },
       quantity: {
         type: Number,
-        required: true,
-      },
-    },
-  ],
+        required: true
+      }
+    }
+  ]
 });
 
 const Warehouse = mongoose.model("Warehouse", WarehouseSchema);
