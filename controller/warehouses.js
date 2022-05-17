@@ -1,4 +1,5 @@
 const warehouseModel = require("../db/productModel");
+const mongoose = require("mongoose");
 
 const getAllWarehouses = async function (req, res) {
   const warehouses = await warehouseModel.find({});
@@ -20,5 +21,16 @@ const getWarehouse = async function (req, res) {
   }
 };
 
+const addProductWarehouse = async function (req, res) {
+  objectId = mongoose.Types.ObjectId(req.params.productId);
 
-module.exports = { getAllWarehouses, getWarehouse };
+  inventory = {
+    product: objectId,
+    quantity: req.body.quantity
+  }
+
+  warehouseModel.findById(req.params.id).inventory.push(inventory);
+
+};
+
+module.exports = { getAllWarehouses, getWarehouse, addProductWarehouse };

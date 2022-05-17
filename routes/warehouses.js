@@ -5,4 +5,7 @@ routes.get("/", warehouses.getAllWarehouses);
 
 routes.get("/:id", warehouses.getWarehouse);
 
+routes.put("/:id/:productId", warehouses.addProductWarehouse);
+
+
 
