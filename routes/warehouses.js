@@ -7,5 +7,5 @@ routes.get("/:id", warehouses.getWarehouse);
 
 routes.put("/:id/:productId", warehouses.addProductWarehouse);
 
-
+module.exports = routes;
 

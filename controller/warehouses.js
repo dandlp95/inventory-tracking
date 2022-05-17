@@ -11,6 +11,7 @@ const getAllWarehouses = async function (req, res) {
   }
 };
 
+
 const getWarehouse = async function (req, res) {
   const warehouse = await warehouseModel.findById(req.params.id);
 
@@ -27,9 +28,14 @@ const addProductWarehouse = async function (req, res) {
   inventory = {
     product: objectId,
     quantity: req.body.quantity
-  }
 
+  }
+  try{
   warehouseModel.findById(req.params.id).inventory.push(inventory);
+  res.status(200).send("Product added.");
+  } catch (err) {
+    res.status(500).send(err);
+  }
 
 };
 

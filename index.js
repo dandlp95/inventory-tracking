@@ -12,7 +12,7 @@ mongoose
         app
             .use(cors())
             .use(express.json())
-            .use(require('./routes'));
+            .use("/", require('./routes'));
         
         app.listen(PORT, ()=>{
             console.log(`Listening on port ${PORT}`);

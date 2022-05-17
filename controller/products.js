@@ -19,10 +19,11 @@ const getProduct = async function (req, res) {
   }
 };
 
-const addProduct = function (req, res) {
+const addProduct = async function (req, res) {
   const product = new productModel(req.body);
 
   try {
+    await product.save();
     res.status(200).send(product);
   } catch (err) {
     res.status(500).send(err);
@@ -30,7 +31,7 @@ const addProduct = function (req, res) {
 };
 
 const editProduct = function (req, res) {
-  productModel.findByIdUpdate(req.params.id, req.body, (err, docs) => {
+  productModel.findByIdAndUpdate(req.params.id, req.body, (err, docs) => {
     if (err) {
       res.status(400).send(err);
     } else {
@@ -58,5 +59,5 @@ module.exports = {
   getProduct,
   addProduct,
   editProduct,
-  deleteProduct,
+  deleteProduct
 };
