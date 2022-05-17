@@ -1,6 +1,6 @@
 const warehouseModel = require("../db/warehouseModel");
 
-const getWarehouses = async function (req, res) {
+const getAllWarehouses = async function (req, res) {
   const warehouses = await warehouseModel.find({});
 
   try {
@@ -59,7 +59,7 @@ const deleteWarehouse = function (req, res) {
 };
 
 module.exports = {
-  getWarehouses,
+  getAllWarehouses,
   getWarehouse,
   addWarehouse,
   editWarehouse,
