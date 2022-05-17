@@ -1,4 +1,4 @@
-const warehouseModel = require("../db/productModel");
+const warehouseModel = require("../db/warehouseModel");
 const mongoose = require("mongoose");
 
 const getAllWarehouses = async function (req, res) {
@@ -11,7 +11,6 @@ const getAllWarehouses = async function (req, res) {
   }
 };
 
-
 const getWarehouse = async function (req, res) {
   const warehouse = await warehouseModel.findById(req.params.id);
 
@@ -23,20 +22,22 @@ const getWarehouse = async function (req, res) {
 };
 
 const addProductWarehouse = async function (req, res) {
-  objectId = mongoose.Types.ObjectId(req.params.productId);
+  const objectId = mongoose.Types.ObjectId(req.params.productId);
 
-  inventory = {
+  const addedInventory = {
     product: objectId,
-    quantity: req.body.quantity
+    quantity: req.body.quantity,
+  };
 
-  }
-  try{
-  warehouseModel.findById(req.params.id).inventory.push(inventory);
-  res.status(200).send("Product added.");
+  const warehouse = await warehouseModel.findById(req.params.id);
+  warehouse.inventory.push(addedInventory);
+
+  try {
+    await warehouse.save();
+    res.status(200).send("Product added.");
   } catch (err) {
     res.status(500).send(err);
   }
-
 };
 
 module.exports = { getAllWarehouses, getWarehouse, addProductWarehouse };
