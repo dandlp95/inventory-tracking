@@ -4,9 +4,9 @@ const getAllProducts = async function (req, res) {
   const products = await productModel.find({});
 
   try {
-    res.status(200).send({ products });
+    res.status(200).send(products);
   } catch (err) {
-    res.status(500).send({ err });
+    res.status(500).send(err);
   }
 };
 
@@ -53,4 +53,10 @@ const deleteProduct = function (req, res) {
   });
 };
 
-module.exports = { getAllProducts, getProduct, addProduct, editProduct, deleteProduct };
+module.exports = {
+  getAllProducts,
+  getProduct,
+  addProduct,
+  editProduct,
+  deleteProduct,
+};
