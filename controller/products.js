@@ -40,6 +40,19 @@ const editProduct = function (req, res) {
   });
 };
 
+const adjustQty = async function (req, res) {
+  const product = await productModel.findById(req.params.id);
+
+  product.quantity = req.body.quantity;
+  product.save();
+
+  try {
+    res.status(200).send(product);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
 const deleteProduct = function (req, res) {
   productModel.findByIdAndDelete(req.params.id, req.body, (err, docs) => {
     if (err) {
@@ -59,5 +72,6 @@ module.exports = {
   getProduct,
   addProduct,
   editProduct,
-  deleteProduct
+  deleteProduct,
+  adjustQty,
 };
