@@ -5,7 +5,10 @@ routes.get("/", warehouses.getAllWarehouses);
 
 routes.get("/:id", warehouses.getWarehouse);
 
+routes.get("/getInventory/:id", warehouses.getInventory);
+
 routes.put("/:id/:productId", warehouses.addProductWarehouse);
 
 module.exports = routes;
+
 

@@ -15,15 +15,6 @@ const getAllWarehouses = async function (req, res) {
 const getWarehouse = async function (req, res) {
   const warehouse = await warehouseModel.findById(req.params.id);
 
-  // temporary debugging code below.
-  // const product = await warehouseModel
-  //   .findById(req.params.id)
-  //   .populate("inventory.product");
-
-  // const item = product.inventory[0].product;
-  // item.description = "I hate cheese. EDITED";
-  // item.save();
-
   try {
     res.status(200).send(warehouse);
   } catch (err) {
@@ -47,7 +38,7 @@ const addProductWarehouse = async function (req, res) {
     // product references product in products collection.
     const addedInventory = {
       product: objectId,
-      quantity: qtyAdded
+      quantity: qtyAdded,
     };
 
     // pushes object to inventory list in warehouse.
@@ -55,39 +46,42 @@ const addProductWarehouse = async function (req, res) {
     warehouse.inventory.push(addedInventory);
     await warehouse.save();
 
-    try{
+    try {
       res.status(200).send(`Product Added succesfully: ${product}`);
-    }catch(err){
+    } catch (err) {
       res.status(500).send(err);
     }
   }
 
-  // await warehouse.save();
-
-  // const product = await productModel.findById(req.params.productId);
-
-  // const totalQty = product.quantity;
-
-  // if (qty > totalQty) {
-  //   res.send("Insufficient Inventory");
-  // } else {
-  //   product.quantity = totalQty - qtyAdded;
-  //   await product.save();
-  // }
-
-  // const addedInventory = {
-  //   product: objectId,
-  //   quantity: qtyAdded,
-  // };
-
-  // const warehouse = await warehouseModel.findById(req.params.id);
-  // warehouse.inventory.push(addedInventory);
-
-  // try {
-  //   res.status(200).send("Product added.");
-  // } catch (err) {
-  //   res.status(500).send(err);
-  // }
 };
 
-module.exports = { getAllWarehouses, getWarehouse, addProductWarehouse };
+const getInventory = async function (req, res) {
+
+  const warehouse = await warehouseModel
+    .findById(req.params.id)
+    .populate("inventory.product");
+
+  inventory = warehouse.inventory.map((item) => {
+    // return item.product;
+    return {
+      name: item.product.productName,
+      description: item.product.description,
+      quantity: item.quantity 
+    }
+  });
+
+  try {
+    res.status(200).send(inventory);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+
+
+};
+
+module.exports = {
+  getAllWarehouses,
+  getWarehouse,
+  addProductWarehouse,
+  getInventory,
+};
