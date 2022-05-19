@@ -25,38 +25,54 @@ const getWarehouse = async function (req, res) {
 const addProductWarehouse = async function (req, res) {
   const objectId = mongoose.Types.ObjectId(req.params.productId);
   const qtyAdded = req.body.quantity; // Quantity added to inventory
-  const product = await productModel.findById(req.params.productId);
-  const totalQty = product.quantity;
+  const inventoryProduct = await productModel.findById(req.params.productId);
+  const totalQty = inventoryProduct.quantity;
 
   if (qtyAdded > totalQty) {
     res.send("Insufficient Inventory.");
   } else {
-    product.quantity = totalQty - qtyAdded; // Removes qty from inventory.
-    product.save();
-
-    // Object added to inventory.
-    // product references product in products collection.
-    const addedInventory = {
-      product: objectId,
-      quantity: qtyAdded,
-    };
-
-    // pushes object to inventory list in warehouse.
     const warehouse = await warehouseModel.findById(req.params.id);
-    warehouse.inventory.push(addedInventory);
-    await warehouse.save();
+
+    // If product already exists in inventory, it will just add the quantity.
+    const productExists = warehouse.inventory.some(function (inventoryItem) {
+      return inventoryItem.product.toString() === objectId.toString();
+      
+    });
+
+    if (!productExists) {
+      // Object added to inventory.
+      // product references product in products collection.
+      const addedInventory = {
+        product: objectId,
+        quantity: qtyAdded,
+      };
+
+      warehouse.inventory.push(addedInventory);
+      await warehouse.save();
+    } else {
+
+      const productIndex = warehouse.inventory.findIndex(function (inventoryItem) {
+        console.log(`${inventoryItem.product} and ${objectId}`)
+        return inventoryItem.product.toString() == objectId.toString();
+      });
+
+      console.log(productIndex);
+      warehouse.inventory[productIndex].quantity += parseInt(qtyAdded);
+      warehouse.save();
+    }
+
+    inventoryProduct.quantity = totalQty - qtyAdded; // Removes qty from inventory.
+    inventoryProduct.save();
 
     try {
-      res.status(200).send(`Product Added succesfully: ${product}`);
+      res.status(200).send(`Product Added succesfully: ${inventoryProduct}`);
     } catch (err) {
       res.status(500).send(err);
     }
   }
-
 };
 
 const getInventory = async function (req, res) {
-
   const warehouse = await warehouseModel
     .findById(req.params.id)
     .populate("inventory.product");
@@ -66,8 +82,8 @@ const getInventory = async function (req, res) {
     return {
       name: item.product.productName,
       description: item.product.description,
-      quantity: item.quantity 
-    }
+      quantity: item.quantity,
+    };
   });
 
   try {
@@ -75,8 +91,6 @@ const getInventory = async function (req, res) {
   } catch (err) {
     res.status(500).send(err);
   }
-
-
 };
 
 module.exports = {
