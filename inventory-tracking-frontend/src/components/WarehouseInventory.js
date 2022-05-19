@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function WarehouseInventory() {
+
   const { id } = useParams();
   const [inventory, setInventory] = useState(null);
 
@@ -22,8 +23,8 @@ function WarehouseInventory() {
           return (
             <div>
               <h2>{item.name}</h2>
-              <p>{item.description}</p>
-              <p>{item.quantity}</p>
+              <p>Description: {item.description}</p>
+              <p>Quantity: {item.quantity}</p>
             </div>
           );
         })}

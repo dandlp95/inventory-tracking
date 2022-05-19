@@ -12,8 +12,11 @@ import AddInventoryForm from "./components/AddInventoryForm";
 import AddWarehouseForm from "./components/AddWarehouseForm";
 
 function App() {
+  const mystyle = {
+    padding: "3rem",
+  };
   return (
-    <div>
+    <div style={mystyle}>
       <OptionsBar />
       <Routes>
         <Route path="/products" element={<ProductsLayout />} />

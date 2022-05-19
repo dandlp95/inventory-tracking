@@ -4,6 +4,11 @@ import {Routes, Route, Link} from "react-router-dom";
 
 
 function WarehouseLayout() {
+
+  const warehouseStyle = {
+    margin: "3rem 0"
+  }
+
   const url = "http://localhost:8080/warehouses";
   const [warehouses, setWarehouses] = useState(null);
 
@@ -18,7 +23,7 @@ function WarehouseLayout() {
         <div>
             {warehouses.map((warehouse) =>{
                 return(
-                    <div>
+                    <div style={warehouseStyle}>
                         <Link to={`/warehouses/${warehouse._id}`}>
                         <h2>{warehouse.name}</h2>
                         <p>{warehouse.location}</p>

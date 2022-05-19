@@ -5,6 +5,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function ProductsLayout() {
+
+  const productBtnStyle = {
+    margin: "0 1rem",
+  };
+
+  const addProductBtn = {
+    margin: "5rem",
+    padding:"2rem"
+  };
+
+
   const url = "http://localhost:8080/products";
   const [products, setProducts] = useState(null);
 
@@ -37,10 +48,10 @@ function ProductsLayout() {
           return (
             <div>
               <h2>{product.productName}</h2>
-              <p>{product.description}</p>
-              <p>{product.quantity}</p>
-              <button onClick={deleteProduct}>Delete Product</button>
-              <Link to={`/edit_product/${product._id}`}>Edit Product</Link>
+              <p>Description: {product.description}</p>
+              <p>Stock: {product.quantity}</p>
+              <button style={productBtnStyle}onClick={deleteProduct}>Delete Product</button>
+              <Link style={productBtnStyle} to={`/edit_product/${product._id}`}>Edit Product</Link>
               <Link to={`/add_inventory/${product._id}`}>
                 Add Product to Warehouse Inventory
               </Link>
@@ -49,7 +60,7 @@ function ProductsLayout() {
         })}
         <div>
           <Link to="/add_product">
-            <button>Add Product</button>
+            <button style={addProductBtn}>Add Product</button>
           </Link>
         </div>
       </div>
