@@ -9,7 +9,10 @@ routes.get("/getInventory/:id", warehouses.getInventory);
 
 routes.put("/:id/:productId", warehouses.addProductWarehouse);
 
+routes.post("/add_warehouse", warehouses.addWarehouse);
+
 module.exports = routes;
+
 
 
 

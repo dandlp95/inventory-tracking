@@ -52,11 +52,9 @@ const addProductWarehouse = async function (req, res) {
     } else {
 
       const productIndex = warehouse.inventory.findIndex(function (inventoryItem) {
-        console.log(`${inventoryItem.product} and ${objectId}`)
         return inventoryItem.product.toString() == objectId.toString();
       });
 
-      console.log(productIndex);
       warehouse.inventory[productIndex].quantity += parseInt(qtyAdded);
       warehouse.save();
     }
@@ -93,9 +91,21 @@ const getInventory = async function (req, res) {
   }
 };
 
+const addWarehouse = async function(req, res){
+    const warehouse = new warehouseModel(req.body);
+
+    try{
+      await warehouse.save();
+      res.status(200).send(warehouse);
+    }catch (err) {
+      res.status(500).send(err);
+    }
+}
+
 module.exports = {
   getAllWarehouses,
   getWarehouse,
   addProductWarehouse,
   getInventory,
+  addWarehouse
 };
