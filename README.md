@@ -1,60 +1,35 @@
-# Inventory-tracking-frontend
+# Overview
 
-This application allows you to Add inventory to a database. It will also allow you to manage this inventory in case you need to edit it, send stock to a warehouse, or simply delete it.
+Through this application I could learn how web applications and interact with the frontend to create a dynamic page where a user can comunicate with a database. 
 
-The application will also allow you to manage your warehouses, and add inventory to each warehouse.
-
-## Main Page
-
-The main page will present 3 options:
-
-* All Products - This page displays all products in the database, the amount of stock remaining for each product, and options to manage the inventory.
-* All Warehouses - Display all warehouses in the database, as well as an option to access the inventory for a specific warehouse.
-* Add a warehouse - Displays a form where you can add a new warehouse.
-
-It will look like this:
-
-![](images/main-menu.jpg)
+{Provide a description the web app that you wrote. Describe how to start a test server on your computer and what website to open up to see the first page of the app.}
 
 
-## All Products
+{Describe your purpose for writing this software.}
 
-It displays all the products in the global products inventory. It shows the remaining stock for each product. It does not include the stock that was already assigned to a specific warehouse. 
+{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running (starting the server and navigating through the web pages) and a walkthrough of the code.}
 
-It will look like this:
+[Software Demo Video](http://youtube.link.goes.here)
 
-![](images/products-manager.jpg)
+# Web Pages
 
+{Describe each of the web pages you created and how the web app transitions between each of them.  Also describe what is dynamically created on each page.}
 
+# Development Environment
 
-Under each product, you will find 3 options:
+{Describe the tools that you used to develop the software}
 
-* Delete Product. It instantly deletes the product from the database.
-* Edit Product. Takes you to a form that you can fill out with the new information.
-* Add Product to the Warehouse Inventory. You can assign the product to any inventory in the database. 
+{Describe the programming language that you used and any libraries.}
 
-Finally, at the end there is an "Add Product", which will open a form you can fill out.
+# Useful Websites
 
-## All Warehouses
+{Make a list of websites that you found helpful in this project}
+* [Web Site Name](http://url.link.goes.here)
+* [Web Site Name](http://url.link.goes.here)
 
-It displays a list of all warehouses in the database. It looks like this:
+# Future Work
 
-![](images/warehouse-manager.jpg)
-
-
-You can click each warehouse which will give you the option to see its inventory:
-
-![](images/warehouse-inventory.jpg)
-
-The inventory will display a list of products, similar to the list displayed in the "All Products" page. Keep in mind, the stock showed in this warehouse inventory list will display the stock that is specifically assigned to this warehouse. 
-
-## Add Warehouse Page
-
-This page displays a form you can submit, which will add a new warehouse to the database.
-
-![](images/add-warehouse-form.jpg)
-
-
-#### Sidenote
-When you click submit on a form, the page will remain the same but the data will be sent to the database. 
-
+{Make a list of things that you need to fix, improve, and add in the future.}
+* Item 1
+* Item 2
+* Item 3

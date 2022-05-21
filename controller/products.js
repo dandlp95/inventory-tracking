@@ -54,7 +54,7 @@ const adjustQty = async function (req, res) {
 };
 
 const deleteProduct = function (req, res) {
-  productModel.findByIdAndDelete(req.params.id, req.body, (err, docs) => {
+  productModel.findByIdAndDelete(req.params.id, (err, docs) => {
     if (err) {
       send.status(400).send(err);
     } else {
