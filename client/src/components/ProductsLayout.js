@@ -16,7 +16,7 @@ function ProductsLayout() {
   };
 
 
-  const url = "http://localhost:8080/products";
+  const url = "https://inv-tracking-dlp.herokuapp.com/backend/products";
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
