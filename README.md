@@ -12,7 +12,7 @@ I wrote this software to learn full-stack, as I also implemented react for the f
 
 {Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running (starting the server and navigating through the web pages) and a walkthrough of the code.}
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo](https://youtu.be/dD6ByWSgxPQ)
 
 # Web Pages
 
@@ -26,7 +26,7 @@ Finally, the third option is a form to add a new warehouse to the database.
 
 # Development Environment
 
-The tools I used were Node.js and React.js. I used many modules as well such as express, mongoose, react-router-dom, nodemon, dotenv and cors.
+The tools I used were Node.js and React.js. I used many modules as well such as express,mongodb, mongoose, react-router-dom, nodemon, dotenv and cors.
 
 The main languages used were Javascript and HTML/CSS.
 
