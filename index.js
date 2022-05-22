@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 8080;
 const path = require("path");
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
-  app.use(cors()).use(express.json()).use("/", require("./routes"));
+  app.use(cors()).use(express.json()).use("/backend", require("./routes"));
 
   if (process.env.NODE_ENV === "production"){
     app.use(express.static('client/build'));
