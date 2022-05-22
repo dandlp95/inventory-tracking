@@ -7,7 +7,7 @@ function WarehouseInfo() {
   const { id } = useParams();
   const [warehouse, setWarehouse] = useState(null);
 
-  const url = `http://localhost:8080/warehouses/${id}`;
+  const url = `https://inv-tracking-dlp.herokuapp.com/backend/warehouses/${id}`;
 
   useEffect(() => {
     axios.get(url).then((response) => {

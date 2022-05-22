@@ -33,7 +33,7 @@ function ProductsLayout() {
         {products.map((product) => {
           async function deleteProduct() {
             const id = product._id;
-            const url = `http://localhost:8080/products/delete_product/${id}`;
+            const url = `https://inv-tracking-dlp.herokuapp.com/backend/delete_product/${id}`;
 
             const options = {
               method: "DELETE",

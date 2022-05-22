@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 function EditProductForm() {
   const { id } = useParams();
-  const url = `http://localhost:8080/products/edit_product/${id}`;
+  const url = `https://inv-tracking-dlp.herokuapp.com/backend/edit_product/${id}`;
   
   const productNameInputRef = useRef();
   const descriptionInputRef = useRef();

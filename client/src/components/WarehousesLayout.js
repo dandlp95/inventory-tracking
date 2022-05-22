@@ -9,7 +9,7 @@ function WarehouseLayout() {
     margin: "3rem 0"
   }
 
-  const url = "http://localhost:8080/warehouses";
+  const url = "https://inv-tracking-dlp.herokuapp.com/backend/warehouses";
   const [warehouses, setWarehouses] = useState(null);
 
   useEffect(() => {

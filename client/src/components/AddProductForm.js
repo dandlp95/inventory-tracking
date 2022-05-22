@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 function AddProductForm() {
-  const url = "http://localhost:8080/products/add_product";
+  const url = "https://inv-tracking-dlp.herokuapp.com/backend/products/add_product";
 
   const productNameInputRef = useRef();
   const descriptionInputRef = useRef();

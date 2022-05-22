@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 function AddWarehouseForm(){
-    const url = "http://localhost:8080/warehouses/add_warehouse";
+    const url = "https://inv-tracking-dlp.herokuapp.com/backend/warehouses/add_warehouse";
 
     const warehouseNameInput = useRef();
     const locationInput = useRef();

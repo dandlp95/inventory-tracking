@@ -3,7 +3,7 @@ import { useParams, Link, Route, Routes } from "react-router-dom";
 import axios from "axios";
 
 function AddInventoryForm() {
-  const urlAllWarehouses = "http://localhost:8080/warehouses";
+  const urlAllWarehouses = "https://inv-tracking-dlp.herokuapp.com/backend/warehouses";
   const [warehouses, setWarehouses] = useState(null);
 
   const { id } = useParams(); // This is id of the product
@@ -34,7 +34,7 @@ function AddInventoryForm() {
       quantity: enteredQuantity,
     };
 
-    const urlReq = `http://localhost:8080/warehouses/${enteredWarehouse}/${productId}`;
+    const urlReq = `https://inv-tracking-dlp.herokuapp.com/backend/warehouses/${enteredWarehouse}/${productId}`;
 
     addInventoryHandler(quantity, urlReq);
   }
